@@ -27,3 +27,7 @@ Ryota Yoshikawa ( @rrreeeyyy ) ( <ryota-yoshikawa@cookpad.com> / <yoshikawa@rrre
 - @itkq
 - @mozamimy
 - @hfm
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
