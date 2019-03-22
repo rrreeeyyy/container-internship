@@ -22,7 +22,7 @@ Linux Namespaces や、Filesystem の取り扱い、Cgroups によるリソー�
 
 Ryota Yoshikawa ( @rrreeeyyy ) ( <ryota-yoshikawa@cookpad.com> / <yoshikawa@rrreeeyyy.com> )
 
-## Contributers
+## Contributors
 
 - @itkq
 - @mozamimy
