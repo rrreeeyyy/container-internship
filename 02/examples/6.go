@@ -49,7 +49,7 @@ func InitContainer() error {
 	if err := syscall.Sethostname([]byte("container")); err != nil {
 		return fmt.Errorf("Setting hostname failed: %w", err)
 	}
-	if err := syscall.Mount("proc", "/proc", "proc", uintptr(syscall.MS_NOEXEC|syscall.MS_NOSUID|syscall.MS_NODEV), ""); err != nil {
+	if err := syscall.Mount("proc", "/root/chroot/proc", "proc", uintptr(syscall.MS_NOEXEC|syscall.MS_NOSUID|syscall.MS_NODEV), ""); err != nil {
 		return fmt.Errorf("Proc mount failed: %w", err)
 	}
 	if err := syscall.Chroot("/root/chroot"); err != nil {

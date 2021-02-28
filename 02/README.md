@@ -299,7 +299,7 @@ Linux には、プロセスのルートディレクトリや、ルートファ�
 --- 5.go	2019-03-19 13:58:13.000000000 +0900
 +++ 6.go	2019-03-19 14:00:44.000000000 +0900
 @@ -52,6 +52,12 @@
- 	if err := syscall.Mount("proc", "/proc", "proc", uintptr(syscall.MS_NOEXEC|syscall.MS_NOSUID|syscall.MS_NODEV), ""); err != nil {
+ 	if err := syscall.Mount("proc", "/root/chroot/proc", "proc", uintptr(syscall.MS_NOEXEC|syscall.MS_NOSUID|syscall.MS_NODEV), ""); err != nil {
  		return fmt.Errorf("Proc mount failed: %w", err)
  	}
 +	if err := syscall.Chroot("/root/chroot"); err != nil {
@@ -322,6 +322,7 @@ mkdir -p /root/chroot/proc
 また、chroot 後の環境でも `sh` と `ls` が利用できるように、`sh`, `ls` 並びに必要な静的ライブラリを設置します。
 
 ```sh
+mkdir -p /root/chroot/proc
 mkdir -p /root/chroot/bin
 mkdir -p /root/chroot/lib
 
@@ -490,7 +491,7 @@ cd
 
 ## capabilities
 
-Linux のプロセスに対する権限チェックは、特権プロセスと呼ばれる、実効ユーザ ID (euid) が 0 （つまり root のこと）のプロセスか、 
+Linux のプロセスに対する権限チェックは、特権プロセスと呼ばれる、実効ユーザ ID (euid) が 0 （つまり root のこと）のプロセスか、
 非特権プロセスと呼ばれる実効ユーザ ID が 0 ではないプロセスかで大きく異なっており、特権プロセスでは全てのカーネルの権限チェックがバイパスされます。
 
 Linux capabilities では、root が持っていた権限を capability と呼ばれるいくつかのグループに分割しています。
